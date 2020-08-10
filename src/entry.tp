@@ -1,0 +1,157 @@
+{
+  "sdk": 2,
+  "version": 1,
+  "name": "SnoopPlugin",
+  "id": "TouchPortal.SnoopPlugin",
+  "configuration": {
+    "colorDark": "#000000",
+    "colorLight": "#23CF5F"
+  },
+  "plugin_start_cmd": "",
+  "categories": [
+    {
+      "id": "TouchPortal.SnoopPlugin.BaseCategory",
+      "name": "SnoopPlugin",
+      "imagepath": "",
+      "actions": [
+        {
+          "id":"action test",
+          "name":"Test Function",
+          "prefix":"Snoop Plugin",
+          "type":"communicate",
+          "description":"Test Function because",
+          "tryInline":true,
+          "format": "{$com.github.tlewis17.TouchPortal.SnoopPlugin.BaseCategory.Action.Test.Data.TestActions$}",
+          "data": [
+            {
+              "id":"com.github.tlewis17.TouchPortal.SnoopPlugin.BaseCategory.Action.Test.Data.TestActions",
+              "type":"choice",
+              "label": "Action",
+              "default": "Toggle",
+              "valueChoices": [
+                "Play",
+                "Pause",
+                "Toggle"
+              ]
+            }
+          ]
+        },
+        {
+          "id":"devMode",
+          "name":"Toggle Dev Mode",
+          "prefix": "Snoop Plugin",
+          "type":"communicate",
+          "description": "Toggle Dev Mode",
+          "tryInline": true,
+          "format": "Dev Mode - {$devMode.Data.Actions$}",
+          "data": [
+            {
+              "id":"devMode.Data.Actions",
+              "type":"choice",
+              "label":"Action",
+              "default":"Toggle",
+              "valueChoices": [
+                "On",
+                "Off",
+                "Toggle"
+              ]
+            }
+          ]
+        }
+      ],
+      "events": [],
+      "states": [
+        {
+          "id": "sp_devmode",
+          "type": "choice",
+          "desc": "The mode to run the plugin in.",
+          "default": "Off",
+          "valueChoices": [
+            "On",
+            "Off"
+          ]
+        }
+      ]
+    },
+    {
+      "id":"TouchPortal.SnoopPlugin.DCS",
+      "name":"DCS",
+      "imagepath":"",
+      "actions":[
+        {
+          "id":"TouchPortal.SnoopPlugin.DCS.Action.UFC.Keypad",
+          "name":"UFC Keypad",
+          "prefix":"DCS",
+          "type":"communicate",
+          "description":"Press UFC Keypad",
+          "tryInline": true,
+          "format":"Press {$TouchPortal.SnoopPlugin.DCS.Action.UFC.Keypad.Data.Entry$} on UFC Keypad",
+          "data":[
+            {
+              "id":"TouchPortal.SnoopPlugin.DCS.Action.UFC.Keypad.Data.Entry",
+              "type": "choice",
+              "label": "Action",
+              "default": "Clr",
+              "valueChoices": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "CLR",
+                "ENT",
+                "IP",
+                "AP",
+                "TCN",
+                "ONOFF",
+                "ILS",
+                "IFF",
+                "DL",
+                "BCN",
+                "EMCON"
+              ]
+            }
+          ]
+        },
+        {
+          "id":"TouchPortal.SnoopPlugin.DCS.Action.UFC.OptionSelect",
+          "name":"UFC Option Select",
+          "prefix":"DCS",
+          "type":"communicate",
+          "description": "Press Option Selects on UFC",
+          "tryInline":true,
+          "format":"Press {$TouchPortal.SnoopPlugin.DCS.Action.UFC.OptionSelect.Data.Entry$} on UFC Option Select",
+          "data":[
+            {
+              "id":"TouchPortal.SnoopPlugin.DCS.Action.UFC.OptionSelect.Data.Entry",
+              "type":"choice",
+              "label":"Action",
+              "default":"1",
+              "valueChoices":[
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          ]
+        }
+      ],
+      "events": [],
+      "states":[
+        {
+          "id":"TouchPortal.SnoopPlugin.DCS.Action.UFC.OptionDisplay1",
+          "type":"text",
+          "desc":"DCS F-18C UFC Options Display 1",
+          "default": ""
+        }
+      ]
+    }
+  ]
+}
